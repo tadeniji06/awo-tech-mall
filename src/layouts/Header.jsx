@@ -1,25 +1,28 @@
-import { navigationLinks } from "../utils/data";
-import { logo } from "../assets";
-import { useState } from "react";
-import { Link } from "react-router-dom";
-import { formLink } from "../utils/data";
+import { navigationLinks } from '../utils/data';
+import { logo } from '../assets';
+import { useState } from 'react';
+import { Link } from 'react-router-dom';
+import { formLink } from '../utils/data';
 
 const Header = ({ className }) => {
-	const [isOpen, setIsOpen] = useState(false);
+	const [isOpen, setIsOpen] =
+		useState(false);
 	const toggleMenu = () => {
 		setIsOpen(!isOpen);
 	};
 
 	return (
-		<div className={`${className} relative z-50`}>
+		<div
+			className={`${className} relative z-50`}
+		>
 			<div className='container mx-auto md:px-8'>
 				<div className='flex items-center justify-between p-4 md:p-8 h-16 md:h-14 md:mt-8 md:rounded-3xl relative bg-gradient-to-r from-primary-blue to-primary-lemon-green'>
 					<div className='flex-shrink-0 z-50'>
-						<Link to={"/"}>
+						<Link to={'/'}>
 							<img
 								src={logo}
 								alt='Vendura logo'
-								className='h-8 md:h-[60px] w-auto'
+								className='h-[40px] md:h-[60px] w-auto'
 							/>
 						</Link>
 					</div>
