@@ -10,7 +10,8 @@ import exi from './images/exi.png';
 import store from './images/store.png';
 import shop from './images/shop.jpg';
 import evh from './events/evh.jpg';
-
+import about from './images/about.jpg';
+import story from './images/story.png';
 import o1 from './events/o1.png';
 import o2 from './events/o2.png';
 import o3 from './events/o3.png';
@@ -29,6 +30,7 @@ export {
 	logo,
 	hero,
 	games,
+	story,
 	park,
 	res,
 	salon,
@@ -50,4 +52,5 @@ export {
 	n4,
 	n5,
 	n6,
+	about,
 };
