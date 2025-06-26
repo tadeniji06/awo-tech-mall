@@ -1,3 +1,4 @@
+import PaymentPlan from '../components/spaces/PaymentPlan';
 import Sizing from '../components/spaces/Sizing';
 import SpaceHero from '../components/spaces/SpaceHero';
 
@@ -6,6 +7,7 @@ const Spaces = () => {
 		<>
 			<SpaceHero />
 			<Sizing />
+			<PaymentPlan />
 		</>
 	);
 };
