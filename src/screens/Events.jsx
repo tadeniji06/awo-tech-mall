@@ -1,6 +1,12 @@
+import EventBody from '../components/events/EventBody';
+import EventHero from '../components/events/EventHero';
+
 const Events = () => {
-  return (
-    <div>Events</div>
-  )
-}
-export default Events
+	return (
+		<>
+			<EventHero />
+      <EventBody />
+		</>
+	);
+};
+export default Events;
