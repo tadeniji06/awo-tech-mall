@@ -1,238 +1,203 @@
-import { motion } from "framer-motion";
-import { hero } from "../../assets";
-import Button from "../ui/Button";
-import Header from "../../layouts/Header";
+import { useState, useEffect } from 'react';
+import {
+	motion,
+	AnimatePresence,
+} from 'framer-motion';
+import Button from '../ui/Button';
+import Header from '../../layouts/Header';
+import { hero, story } from '../../assets';
 
 const Hero = () => {
-	// Animation variants
-	const containerVariants = {
-		hidden: { opacity: 0 },
-		visible: {
-			opacity: 1,
-			transition: {
-				staggerChildren: 0.2,
-				delayChildren: 0.1,
-			},
+	const slides = [
+		{
+			img: hero,
+			title: 'Where Legacy Meets Innovation',
+			body: `Welcome to Awolowo Tech Hub, a bold transformation of the iconic Awolowo House into a future-ready ecosystem of luxury, business, and technology in the heart of Ikeja.`,
+			accent: 'Now Selling',
+			bgGradient:
+				'from-primary-lemon-green to-primary-blue',
 		},
-	};
+		{
+			img: story,
+			title:
+				'Designing for Future-Thinking Minds',
+			body: `This is not just a property; it’s a purpose-built space where startups, tech firms, and creatives thrive. Join the evolution.`,
+			accent: 'Limited Spaces',
+			bgGradient:
+				'from-primary-lemon-green to-primary-blue',
+		},
+	];
 
-	const itemVariants = {
-		hidden: { opacity: 0, y: 30 },
-		visible: {
-			opacity: 1,
-			y: 0,
-			transition: {
-				duration: 0.6,
-				ease: "easeOut",
-			},
-		},
-	};
+	const [currentSlide, setCurrentSlide] =
+		useState(0);
+	const [isAutoPlaying, setIsAutoPlaying] =
+		useState(true);
 
-	const imageVariants = {
-		hidden: { opacity: 0, scale: 0.8 },
-		visible: {
-			opacity: 1,
-			scale: 1,
-			transition: {
-				duration: 0.8,
-				ease: "easeOut",
-			},
-		},
-	};
+	useEffect(() => {
+		if (!isAutoPlaying) return;
+		const interval = setInterval(() => {
+			setCurrentSlide(
+				(prev) => (prev + 1) % slides.length
+			);
+		}, 6000);
+		return () => clearInterval(interval);
+	}, [isAutoPlaying]);
 
-	const buttonVariants = {
-		hidden: { opacity: 0, y: 20 },
-		visible: {
-			opacity: 1,
-			y: 0,
-			transition: {
-				duration: 0.5,
-				ease: "easeOut",
-			},
-		},
-		hover: {
-			scale: 1.05,
-			transition: {
-				duration: 0.2,
-				ease: "easeInOut",
-			},
-		},
-		tap: {
-			scale: 0.95,
-		},
-	};
-
-	const floatingVariants = {
-		animate: {
-			y: [0, -10, 0],
-			transition: {
-				duration: 3,
-				repeat: Infinity,
-				ease: "easeInOut",
-			},
-		},
+	const changeSlide = (newIndex) => {
+		setCurrentSlide(newIndex);
+		setIsAutoPlaying(false);
+		setTimeout(
+			() => setIsAutoPlaying(true),
+			8000
+		);
 	};
 
 	return (
-		<section className="relative min-h-screen">
-			{/* Header */}
-			<div className="absolute top-0 left-0 w-full z-50">
+		<section className='relative h-screen w-full overflow-hidden'>
+			<div className='absolute top-0 left-0 w-full z-50'>
 				<Header />
 			</div>
 
-			<motion.section
-				className="flex flex-col items-center justify-center gap-8 px-4 sm:px-6 lg:px-8 pt-24 md:pt-32"
-				variants={containerVariants}
-				initial="hidden"
-				animate="visible"
-			>
-			{/* Hero Title */}
-			<motion.h2
-				className="text-3xl sm:text-4xl lg:text-5xl text-primary-lemon-green font-semibold text-center leading-tight"
-				variants={itemVariants}
-			>
-				Where Legacy Meets Innovation
-			</motion.h2>
-
-			{/* Hero Description */}
-			<motion.p
-				className="text-base sm:text-lg lg:text-xl text-primary-gray-500 max-w-2xl text-center leading-relaxed px-4"
-				variants={itemVariants}
-			>
-				Welcome to Awolowo Tech Hub, a bold transformation of the iconic
-				Awolowo House into a future-ready ecosystem of luxury, business,
-				and technology in the heart of Ikeja.
-			</motion.p>
-
-			{/* Primary CTA Button */}
-			<motion.div variants={buttonVariants} whileHover="hover" whileTap="tap">
-				<Button
-					title="Book A Space"
-					className="bg-primary-blue py-3 px-6 sm:py-4 sm:px-8 text-sm sm:text-base font-medium shadow-lg hover:shadow-xl transition-shadow duration-300"
-				/>
-			</motion.div>
-
-			{/* Hero Image */}
-			<motion.div
-				className="container h-[300px] sm:h-[400px] lg:h-[500px] mx-auto px-4 sm:px-6 lg:px-8"
-				variants={imageVariants}
-			>
+			<AnimatePresence mode='wait'>
 				<motion.div
-					className="relative w-full h-full overflow-hidden rounded-xl"
-					whileHover={{ scale: 1.02 }}
-					transition={{ duration: 0.3 }}
+					key={currentSlide}
+					initial={{ opacity: 0 }}
+					animate={{ opacity: 1 }}
+					exit={{ opacity: 0 }}
+					transition={{ duration: 0.6 }}
+					className='absolute inset-0 z-0'
 				>
 					<img
-						className="w-full h-full object-cover"
-						src={hero}
-						alt="Awolowo Tech Hub"
+						src={slides[currentSlide].img}
+						alt={slides[currentSlide].title}
+						className='w-full h-full object-cover'
 					/>
-					{/* Overlay gradient for better text readability if needed */}
-					<div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300" />
+					<div className='absolute inset-0 bg-black/60'></div>
+					<div
+						className={`absolute inset-0 bg-gradient-to-br ${slides[currentSlide].bgGradient} opacity-30`}
+					></div>
 				</motion.div>
-			</motion.div>
+			</AnimatePresence>
 
-			{/* Content Section */}
-			<motion.div
-				className="flex items-center justify-center gap-8 flex-col lg:flex-row max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"
-				variants={containerVariants}
-			>
-				{/* Text Content */}
-				<motion.div
-					className="flex flex-col max-w-md lg:max-w-lg gap-5 text-center lg:text-left"
-					variants={itemVariants}
-				>
-					<motion.h2
-						className="text-xl sm:text-2xl lg:text-3xl text-primary-gray-500 font-semibold leading-tight"
-						variants={itemVariants}
-					>
-						A Space Designed for Innovation, Growth, and Experience
-					</motion.h2>
+			<div className='relative z-10 h-full flex items-center'>
+				<div className='max-w-7xl mx-auto px-6 sm:px-12 w-full'>
+					<div className='grid lg:grid-cols-2 gap-12 items-center h-full'>
+						<motion.div
+							key={`content-${currentSlide}`}
+							initial={{
+								x: -30,
+								opacity: 0,
+							}}
+							animate={{ x: 0, opacity: 1 }}
+							transition={{ duration: 0.5 }}
+							className='text-white space-y-6 md:space-y-8'
+						>
+							<motion.div
+								initial={{
+									scale: 0.9,
+									opacity: 0,
+								}}
+								animate={{
+									scale: 1,
+									opacity: 1,
+								}}
+								transition={{
+									duration: 0.3,
+									delay: 0.1,
+								}}
+								className='inline-block'
+							>
+								<span className='inline-flex items-center px-4 py-2 rounded-full text-sm font-semibold bg-black/40 backdrop-blur-sm border border-white/30 text-white'>
+									{
+										slides[currentSlide]
+											.accent
+									}
+								</span>
+							</motion.div>
+							<motion.h1 className='text-4xl lg:text-5xl xl:text-6xl font-bold leading-tight'>
+								{slides[currentSlide].title}
+							</motion.h1>
+							<motion.p className='text-lg text-gray-100 max-w-2xl leading-relaxed'>
+								{slides[currentSlide].body}
+							</motion.p>
+							<motion.div
+								whileHover={{ scale: 1.05 }}
+								whileTap={{ scale: 0.95 }}
+								className='pt-4'
+							>
+								<Button
+									title='Book A Space'
+									className='px-8 py-4 text-lg font-semibold shadow-lg bg-primary-blue hover:shadow-xl'
+								/>
+							</motion.div>
+						</motion.div>
 
-					<motion.p
-						className="text-sm sm:text-base lg:text-lg text-primary-gray-500 leading-relaxed"
-						variants={itemVariants}
-					>
-						The Awolowo Technology Hub is a transformative redevelopment
-						initiative that seeks to repurpose the iconic Awolowo House,
-						located in the heart of Ikeja's bustling commercial district,
-						into a cutting-edge innovation and co-creation space. This
-						project aims to breathe new life into the building by
-						converting it into a vibrant technology and enterprise
-						ecosystem that will foster creativity, digital
-						entrepreneurship, and technological advancement. By leveraging
-						the central location and historical significance of the
-						existing structure, the project seeks to anchor a new wave of
-						innovation that bridges legacy and future-forward thinking.
-					</motion.p>
+						<motion.div
+							initial={{ x: 30, opacity: 0 }}
+							animate={{ x: 0, opacity: 1 }}
+							transition={{ duration: 0.5 }}
+							className='hidden lg:flex justify-center items-center'
+						>
+							<div className='relative w-72 h-72 lg:w-96 lg:h-96'>
+								<motion.div
+									animate={{
+										y: [-8, 8, -8],
+									}}
+									transition={{
+										duration: 4,
+										repeat: Infinity,
+									}}
+									className='absolute -top-10 -left-10 bg-black/50 backdrop-blur-md p-4 rounded-2xl border border-white/20 shadow-2xl'
+								>
+									<div className='text-2xl font-bold text-white'>
+										100%
+									</div>
+									<div className='text-sm text-gray-200'>
+										Flexibility
+									</div>
+								</motion.div>
 
+								<motion.div
+									animate={{ y: [8, -8, 8] }}
+									transition={{
+										duration: 3,
+										repeat: Infinity,
+									}}
+									className='absolute -bottom-10 -right-10 bg-black/50 backdrop-blur-md p-4 rounded-2xl border border-white/20 shadow-2xl'
+								>
+									<div className='text-2xl font-bold text-white'>
+										100%
+									</div>
+									<div className='text-sm text-gray-200'>
+										Sustainability
+									</div>
+								</motion.div>
+
+								<div className='absolute inset-0 flex items-center justify-center'>
+									<div className='w-32 h-32 lg:w-40 lg:h-40 border-2 border-white/20 rounded-full animate-pulse'></div>
+									<div className='absolute w-16 h-16 lg:w-20 lg:h-20 border border-white/30 rounded-full animate-ping'></div>
+								</div>
+							</div>
+						</motion.div>
+					</div>
+				</div>
+			</div>
+
+			{isAutoPlaying && (
+				<div className='absolute bottom-0 left-0 right-0 h-1 bg-white/20 z-20'>
 					<motion.div
-						variants={buttonVariants}
-						whileHover="hover"
-						whileTap="tap"
-						className="flex justify-center lg:justify-start"
-					>
-						<Button
-							title="Learn More"
-							className="bg-primary-blue py-3 px-6 sm:py-4 sm:px-8 text-sm sm:text-base font-medium shadow-lg hover:shadow-xl transition-shadow duration-300"
-						/>
-					</motion.div>
-				</motion.div>
-
-				{/* Side Image */}
-				<motion.div
-					className="w-full max-w-md lg:max-w-lg h-[300px] sm:h-[400px] lg:h-[500px] flex items-center justify-center"
-					variants={imageVariants}
-				>
-					<motion.div
-						className="relative w-full h-full overflow-hidden rounded-xl"
-						variants={floatingVariants}
-						animate="animate"
-						whileHover={{ 
-							scale: 1.05,
-							rotateY: 5,
-							transition: { duration: 0.3 }
+						key={currentSlide}
+						initial={{ width: '0%' }}
+						animate={{ width: '100%' }}
+						transition={{
+							duration: 6,
+							ease: 'linear',
 						}}
-					>
-						<img
-							className="w-full h-full object-cover"
-							src={hero}
-							alt="Awolowo Tech Hub Interior"
-						/>
-						{/* Subtle glow effect */}
-						<div className="absolute inset-0 bg-gradient-to-br from-primary-lemon-green/10 to-primary-blue/10 opacity-0 hover:opacity-100 transition-opacity duration-500" />
-					</motion.div>
-				</motion.div>
-			</motion.div>
-
-			{/* Decorative elements */}
-			<motion.div
-				className="absolute top-32 left-10 w-2 h-2 bg-primary-lemon-green rounded-full opacity-60 hidden lg:block z-10"
-				animate={{
-					scale: [1, 1.2, 1],
-					opacity: [0.6, 1, 0.6],
-				}}
-				transition={{
-					duration: 2,
-					repeat: Infinity,
-					ease: "easeInOut",
-				}}
-			/>
-			<motion.div
-				className="absolute top-52 right-20 w-3 h-3 bg-primary-blue rounded-full opacity-40 hidden lg:block z-10"
-				animate={{
-					scale: [1, 1.5, 1],
-					opacity: [0.4, 0.8, 0.4],
-				}}
-				transition={{
-					duration: 3,
-					repeat: Infinity,
-					ease: "easeInOut",
-					delay: 1,
-				}}
-			/>
-		</motion.section>
-	</section>
+						className='h-full bg-gradient-to-r from-blue-400 to-purple-500'
+					/>
+				</div>
+			)}
+		</section>
 	);
 };
 
