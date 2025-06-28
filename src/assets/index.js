@@ -26,6 +26,7 @@ import n4 from './events/n4.png';
 import n5 from './events/n5.png';
 import n6 from './events/n6.png';
 
+import ATM from './videos/ATM.mp4';
 export {
 	logo,
 	hero,
@@ -53,4 +54,5 @@ export {
 	n5,
 	n6,
 	about,
+	ATM,
 };
