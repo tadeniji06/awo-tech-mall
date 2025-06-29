@@ -26,9 +26,48 @@ import n4 from './events/n4.png';
 import n5 from './events/n5.png';
 import n6 from './events/n6.png';
 
+import gen from './flyers/gen.png';
 import ATM from './videos/ATM.mp4';
+import aFly from './flyers/aFly.png';
+import a1 from './flyers/a1.png';
+import a2 from './flyers/a2.png';
+
+import bFly from './flyers/bFly.png';
+import b1 from './flyers/b1.png';
+import b2 from './flyers/b2.png';
+import b3 from './flyers/b3.png';
+
+import cFly from './flyers/clFly.png';
+import cl1 from './flyers/cl1.png';
+import cl2 from './flyers/cl2.png';
+import cl3 from './flyers/cl3.png';
+import cl4 from './flyers/cl4.png';
+
+import jFly from './flyers/jFly.png';
+import j1 from './flyers/j1.png';
+import j2 from './flyers/j2.png';
+import j3 from './flyers/j3.png';
+
+
 export {
 	logo,
+	gen,
+	bFly,
+	b1,
+	b2,
+	b3,
+	cFly,
+	jFly,
+	cl1,
+	cl2,
+	cl3,
+	cl4,
+	j1,
+	j2,
+	j3,
+	aFly,
+	a1,
+	a2,
 	hero,
 	games,
 	story,
