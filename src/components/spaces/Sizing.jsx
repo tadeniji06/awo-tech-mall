@@ -1,107 +1,124 @@
-import { motion, useAnimation } from 'framer-motion';
-import { useEffect, useRef } from 'react';
-import { useInView } from 'framer-motion';
+import { useState } from 'react';
+import { g1, g2, g3, g4 } from '../../assets';
 
 const floors = [
 	{
 		id: 1,
-		label: 'Ground floor - shopping areas and parking spaces',
-		bg: 'bg-gradient-to-r from-green-400 to-lime-500',
+		label: 'Ground Floor',
+		img: g4,
+		extra: `Ground Floor – Retail + Parking
+
+Type: Street-level shopping spaces and dedicated parking
+
+Ideal For: High-traffic retail, convenience stores, banks, supermarkets
+
+Price: ₦7,000,000
+
+Notes: Offers maximum visibility and accessibility`,
 	},
 	{
 		id: 2,
-		label: '1st to 3rd Floor – Premium Shopping Areas',
-		bg: 'bg-gradient-to-r from-blue-500 to-indigo-600',
+		label: '1st to 3rd Floor',
+		img: g2,
+		extra: `Type: Spacious indoor shopping units
+
+Ideal For: Boutiques, showrooms, branded stores
+
+Pricing:
+• 1st Floor: ₦5,000,000
+• 2nd Floor: ₦4,500,000
+• 3rd Floor: ₦4,000,000`,
 	},
 	{
 		id: 3,
-		label: '4th Floor – Business Offices & Meeting Areas',
-		bg: 'bg-gradient-to-r from-green-500 to-emerald-600',
+		label: '4th Floor',
+		img: g3,
+		extra: `Type: Office suites, shared meeting rooms
+
+Ideal For: Startups, legal firms, consultants, IT agencies
+
+Price: ₦4,000,000
+
+Highlights: Private workspaces and client-ready meeting zones`,
 	},
 	{
 		id: 4,
-		label: '5th Floor – Lifestyle & Wellness Zone',
-		bg: 'bg-gradient-to-r from-primary-dark-green to-primary-blue',
-		height: 'h-[160px]',
+		label: '5th Floor',
+		img: g1,
+		extra: `Type: Cinema, spa, salon, sauna, rooftop restaurant
+
+Ideal For: Wellness brands, restaurateurs, lifestyle investors
+
+Price: To be negotiated with the MD/CEO
+
+Notes: Premium location with terrace views and exclusive experience offering`,
 	},
 ];
 
 const Sizing = () => {
-	const ref = useRef(null);
-	const isInView = useInView(ref, { once: true });
-	const controls = useAnimation();
-
-	useEffect(() => {
-		if (isInView) {
-			controls.start('visible');
-		}
-	}, [isInView, controls]);
+	const [activeFloor, setActiveFloor] = useState(floors[0]);
 
 	return (
-		<section className='flex flex-col container mx-auto mt-12 px-4 md:px-8'>
-			{/* Header */}
-			<div className='flex flex-col items-center text-center gap-4 mb-12'>
-				<h1 className='text-3xl md:text-4xl font-bold text-gray-900 leading-snug'>
-					Find the Perfect Space to <span className='text-primary-blue'>Grow Your Brand</span>
-				</h1>
-				<p className='text-sm md:text-base max-w-[600px] leading-relaxed text-gray-600'>
-					Retail stores, business offices, wellness zones, and entertainment
-					facilities all in one innovative, luxury environment.
-				</p>
+		<section className='py-12 px-4 md:px-8'>
+			{/* Tabs */}
+			<div className='flex flex-wrap justify-center gap-4 mb-10'>
+				{floors.map((floor) => (
+					<button
+						key={floor.id}
+						onClick={() => setActiveFloor(floor)}
+						className={`px-5 py-2 rounded-full text-sm font-semibold transition-all duration-200
+							${
+								activeFloor.id === floor.id
+									? 'bg-white text-black shadow-md ring-2 ring-primary-blue'
+									: 'bg-transparent text-gray-800 hover:text-black'
+							}`}
+					>
+						{floor.label}
+					</button>
+				))}
 			</div>
 
-			{/* Stacking Cards */}
-			<div
-				className='relative flex flex-col items-center w-full text-center'
-				ref={ref}
-			>
-				{floors.map((floor, index) => {
-					const randomX = Math.random() * (index % 2 === 0 ? -120 : 120);
-					const randomY = Math.random() * 200 + 80;
+			{/* Floor Display */}
+			<div className='flex flex-col md:flex-row gap-8 items-start max-w-6xl mx-auto'>
+				{/* Image */}
+				<div className='w-full md:w-1/2'>
+					<img
+						src={activeFloor.img}
+						alt={activeFloor.label}
+						className='rounded-2xl shadow-lg object-cover w-full h-full max-h-[400px]'
+					/>
+				</div>
 
-					return (
-						<motion.div
-							key={floor.id}
-							initial='hidden'
-							animate={controls}
-							variants={{
-								hidden: {
-									opacity: 0,
-									x: randomX,
-									y: -randomY,
-									scale: 0.95,
-								},
-								visible: {
-									opacity: 1,
-									x: 0,
-									y: 0,
-									scale: 1,
-								},
-							}}
-							whileHover={{
-								scale: 1.02,
-								rotate: index % 2 === 0 ? 1 : -1,
-								boxShadow: '0px 10px 20px rgba(0,0,0,0.15)',
-							}}
-							transition={{
-								duration: 0.7,
-								delay: index * 0.25,
-								ease: 'easeOut',
-							}}
-							className={`absolute w-full max-w-[90%] sm:max-w-2xl md:max-w-3xl ${floor.bg} text-white py-5 px-6 sm:px-10 rounded-xl shadow-lg ring-1 ring-white/10 backdrop-blur-md hover:backdrop-blur-lg transition-all z-[${index}] ${
-								floor.height || ''
-							}`}
-							style={{ top: `${index * 65}px` }}
-						>
-							<h1 className='text-lg md:text-xl font-semibold tracking-wide'>
-								{floor.label}
-							</h1>
-						</motion.div>
-					);
-				})}
+				{/* Info */}
+				<div className='flex-1 space-y-4 text-gray-900 text-base leading-relaxed p-6 md:p-8 font-medium'>
+					{activeFloor.extra.split('\n\n').map((section, idx) => (
+						<div key={idx}>
+							{section.split('\n').map((line, i) => (
+								<p
+									key={i}
+									className={`${
+										line.toLowerCase().includes('price') ||
+										line.toLowerCase().includes('ideal for') ||
+										line.toLowerCase().includes('type') ||
+										line.toLowerCase().includes('notes') ||
+										line.toLowerCase().includes('highlights')
+											? 'font-semibold'
+											: ''
+									} ${line.startsWith('•') ? 'ml-4 list-disc' : ''}`}
+								>
+									{line}
+								</p>
+							))}
+						</div>
+					))}
 
-				{/* Spacer */}
-				<div className='h-[400px] sm:h-[450px] md:h-[480px]'></div>
+					{/* CTA */}
+					<div className='pt-4'>
+						<button className='bg-gradient-to-r from-yellow-400 to-green-600 text-white font-semibold px-6 py-3 rounded-xl shadow-md hover:scale-105 transition-transform'>
+							Get This Space
+						</button>
+					</div>
+				</div>
 			</div>
 		</section>
 	);

@@ -48,9 +48,19 @@ import j1 from './flyers/j1.png';
 import j2 from './flyers/j2.png';
 import j3 from './flyers/j3.png';
 
+import g1 from './images/g1.jpg';
+import g2 from './images/g2.jpg';
+import g3 from './images/g3.jpg';
+import g4 from './images/g4.jpg';
+
+
 
 export {
 	logo,
+	g1,
+	g2,
+	g3,
+	g4,
 	gen,
 	bFly,
 	b1,

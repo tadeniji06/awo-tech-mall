@@ -203,7 +203,7 @@ const WhoWeAre = () => {
 				>
 					<motion.div variants={itemVariants} className='mb-6'>
 						<span className='text-primary-lemon-green font-semibold text-lg'>
-							Our Excellence
+							Who we Are
 						</span>
 					</motion.div>
 					<motion.h2
@@ -220,9 +220,16 @@ const WhoWeAre = () => {
 						variants={itemVariants}
 						className='max-w-3xl mx-auto text-gray-600 text-lg leading-relaxed'
 					>
-						With over 11,000 homes delivered across Nigeria, El-Salem
-						continues to set new standards in luxury development, mass
-						housing, and innovative infrastructure solutions.
+						El-Salem Nigeria is a famous brand of Luxury and is
+						distinguished by its unique development style. The company
+						was incorporated in Nigeria in 1997 as a Real Estate
+						Investment Company. El-Salem Homes is also a registered
+						member of REDAN (Real Estate Developers Association of
+						Nigeria.), and Abuja Chamber of Commerce and Industries.
+						El-Salem is playing a vital role in the reduction of the
+						housing deficit in Nigeria, and has already delivered over
+						11,000 homes in various Cities like: Abuja, Lagos, Ibadan,
+						and Jigawa
 					</motion.p>
 				</motion.div>
 
