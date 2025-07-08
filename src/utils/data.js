@@ -28,17 +28,17 @@ export const navigationLinks = [
 export const socials = [
 	{
 		name: 'Facebook',
-		link: '',
+		link: 'https://www.facebook.com/profile.php?id=61577921517193',
 		icon: 'ic:baseline-facebook',
 	},
 	{
 		name: 'Instagram',
-		link: '',
+		link: 'https://www.instagram.com/awolowotechmall/',
 		icon: 'mdi:instagram',
 	},
 	{
 		name: 'Twitter',
-		link: '',
+		link: 'https://x.com/awolowotechmall',
 		icon: 'prime:twitter',
 	},
 	{
@@ -48,13 +48,12 @@ export const socials = [
 	},
 	{
 		name: 'YouTube',
-		link: '',
+		link: 'https://youtube.com/@el-salemhomes3503?si=3ZN99xNPr9_daV9j',
 		icon: 'mdi:youtube',
 	},
 ];
 
-export const formLink =
-	'https://forms.gle/3b1d7Z5f4g2z8k6u9';
+export const formLink = 'https://forms.gle/3b1d7Z5f4g2z8k6u9';
 
 export const whyUs = [
 	{
@@ -103,8 +102,7 @@ support smooth vehicle
 movement`,
 	},
 	{
-		title:
-			'Luxury Restaurant with Green Courtyard & Terrace',
+		title: 'Luxury Restaurant with Green Courtyard & Terrace',
 		img: res,
 		body: `The restaurant area proposes to
 offer a refined dining experience,
@@ -159,8 +157,7 @@ support smooth vehicle
 movement`,
 	},
 	{
-		title:
-			'Luxury Restaurant with Green Courtyard & Terrace',
+		title: 'Luxury Restaurant with Green Courtyard & Terrace',
 		img: res,
 		body: `The restaurant area proposes to
 offer a refined dining experience,
@@ -224,8 +221,7 @@ movement`,
 export const FAQs = [
 	{
 		no: '01',
-		title:
-			'Where is Awolowo Technology mall located?',
+		title: 'Where is Awolowo Technology mall located?',
 		ans: 'AtMall is located in the heart of Ikeja, right inside the popular computer village, Ikeja.',
 	},
 	{
@@ -235,20 +231,17 @@ export const FAQs = [
 	},
 	{
 		no: '03',
-		title:
-			'What is the minimum shop size I can purchase?',
+		title: 'What is the minimum shop size I can purchase?',
 		ans: '20sqm.',
 	},
 	{
 		no: '04',
-		title:
-			'How many shops are expected to be in the mall?',
+		title: 'How many shops are expected to be in the mall?',
 		ans: 'Sixty (60) spacious shops.',
 	},
 	{
 		no: '05',
-		title:
-			'What is the completion period for the project?',
+		title: 'What is the completion period for the project?',
 		ans: 'Thirty (30) months.',
 	},
 	{
@@ -279,14 +272,15 @@ export const FAQs = [
 	},
 	{
 		no: '11',
-		title:
-			'What document does the property have?',
+		title: 'What document does the property have?',
 		ans: 'The property has a survey plan, power of attorney, and sublease conveyance plan.',
 	},
 	{
 		no: '12',
-		title:
-			'How many square meters does each floor cover?',
+		title: 'How many square meters does each floor cover?',
 		ans: 'Each floor covers about 1,600 square meters.',
 	},
 ];
+
+export const YTChannel =
+	'https://youtube.com/@el-salemhomes3503?si=3ZN99xNPr9_daV9j';

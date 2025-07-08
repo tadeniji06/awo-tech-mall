@@ -22,6 +22,10 @@ import {
 	aFly,
 	a1,
 	a2,
+	wb1,
+	wb2,
+	wb3,
+	wb4,
 } from '../../assets';
 
 const WhoWeAre = () => {
@@ -36,6 +40,7 @@ const WhoWeAre = () => {
 	const jubileeMedia = [jFly, j1, j2, j3];
 	const clintonMedia = [cFly, cl1, cl2, cl3, cl4];
 	const awoMedia = [aFly, a1, a2];
+	const wbMedia = [wb1, wb2, wb3, wb4];
 	const awoVid = ATM;
 	const mainFlyer = gen;
 
@@ -109,6 +114,23 @@ const WhoWeAre = () => {
 				'Premium Amenities',
 			],
 			year: '2024',
+		},
+		{
+			id: 5,
+			title: 'Wemabod Limited',
+			location:
+				'5thFloor,WesternHouse 8/10 Broad Street, Marina, Lagos',
+			description: `Wemabod Limited, formerly known as Nabani Estates Limited, was established in September 1962 as a wholly owned subsidiary of National Bank of Nigeria Limited. Subsequently, Nabani Estates Limited was sold to the Western Nigeria Marketing Board, leading to the adoption of the name Wemabod. With the incorporation of Odua Investment Company Limited in 1976, Wemabod effectively became a subsidiary of Odu'a and assumed management of Odu'a's Real Estate assets, valued at over 60 billion Naira.`,
+			type: 'Residential',
+			status: 'Completed',
+			media: wbMedia,
+			features: [
+				'Modern Homes',
+				'Quality Infrastructure',
+				'Prime Location',
+				'Premium Amenities',
+			],
+			year: '1962',
 		},
 	];
 

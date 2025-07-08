@@ -53,10 +53,17 @@ import g2 from './images/g2.jpg';
 import g3 from './images/g3.jpg';
 import g4 from './images/g4.jpg';
 
-
+import wb1 from './images/wb1.jpg';
+import wb2 from './images/wb2.jpg';
+import wb3 from './images/wb3.jpg';
+import wb4 from './images/wb4.jpg';
 
 export {
 	logo,
+	wb1,
+	wb2,
+	wb3,
+	wb4,
 	g1,
 	g2,
 	g3,
