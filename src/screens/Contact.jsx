@@ -4,7 +4,7 @@ import Header from '../layouts/Header';
 
 const Contact = () => {
 	return (
-		<section className='relative min-h-screen bg-pink-50'>
+		<section className='relative min-h-screen bg-gray-50'>
 			<div className='absolute top-0 left-0 w-full z-50'>
 				<Header />
 			</div>
