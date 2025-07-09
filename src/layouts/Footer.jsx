@@ -1,22 +1,14 @@
-import { useState } from "react";
-import { Link } from "react-router-dom";
-import { Icon } from "@iconify/react/dist/iconify.js";
-import {
-	navigationLinks,
-	socials,
-} from "../utils/data";
-import Button from "../components/ui/Button";
-import { logo } from "../assets";
+import { useState } from 'react';
+import { Link } from 'react-router-dom';
+import { Icon } from '@iconify/react/dist/iconify.js';
+import { navigationLinks, socials } from '../utils/data';
+import Button from '../components/ui/Button';
+import { logo } from '../assets';
 const Footer = () => {
-	const [email, setEmail] = useState("");
-	const [isSubscribing, setIsSubscribing] =
-		useState(false);
-	const [
-		subscriptionStatus,
-		setSubscriptionStatus,
-	] = useState(null);
-	const [emailError, setEmailError] =
-		useState("");
+	const [email, setEmail] = useState('');
+	const [isSubscribing, setIsSubscribing] = useState(false);
+	const [subscriptionStatus, setSubscriptionStatus] = useState(null);
+	const [emailError, setEmailError] = useState('');
 
 	const date = new Date();
 	const year = date.getFullYear();
@@ -26,12 +18,12 @@ const Footer = () => {
 
 	const validateEmail = (email) => {
 		if (!email) {
-			return "Email is required";
+			return 'Email is required';
 		}
 		if (!emailRegex.test(email)) {
-			return "Please enter a valid email address";
+			return 'Please enter a valid email address';
 		}
-		return "";
+		return '';
 	};
 
 	const handleEmailChange = (e) => {
@@ -40,11 +32,11 @@ const Footer = () => {
 
 		// Clear error when user starts typing
 		if (emailError) {
-			setEmailError("");
+			setEmailError('');
 		}
 
 		// Clear success message when user changes email
-		if (subscriptionStatus === "success") {
+		if (subscriptionStatus === 'success') {
 			setSubscriptionStatus(null);
 		}
 	};
@@ -59,25 +51,23 @@ const Footer = () => {
 		}
 
 		setIsSubscribing(true);
-		setEmailError("");
+		setEmailError('');
 
 		try {
 			// Simulate API call - replace with actual subscription logic
-			await new Promise((resolve) =>
-				setTimeout(resolve, 1500)
-			);
+			await new Promise((resolve) => setTimeout(resolve, 1500));
 
 			// Simulate success/error randomly for demo
 			const success = Math.random() > 0.2;
 
 			if (success) {
-				setSubscriptionStatus("success");
-				setEmail("");
+				setSubscriptionStatus('success');
+				setEmail('');
 			} else {
-				setSubscriptionStatus("error");
+				setSubscriptionStatus('error');
 			}
 		} catch (error) {
-			setSubscriptionStatus("error");
+			setSubscriptionStatus('error');
 		} finally {
 			setIsSubscribing(false);
 		}
@@ -85,24 +75,18 @@ const Footer = () => {
 
 	const getSubscriptionMessage = () => {
 		switch (subscriptionStatus) {
-			case "success":
+			case 'success':
 				return (
 					<div className='flex items-center gap-2 text-green-600 text-sm mt-2'>
 						<Icon icon='mdi:check-circle' />
-						<span>
-							Successfully subscribed to our
-							newsletter!
-						</span>
+						<span>Successfully subscribed to our newsletter!</span>
 					</div>
 				);
-			case "error":
+			case 'error':
 				return (
 					<div className='flex items-center gap-2 text-red-600 text-sm mt-2'>
 						<Icon icon='mdi:alert-circle' />
-						<span>
-							Something went wrong. Please try
-							again.
-						</span>
+						<span>Something went wrong. Please try again.</span>
 					</div>
 				);
 			default:
@@ -132,14 +116,11 @@ const Footer = () => {
 							{/* <h2 className="text-2xl font-bold">AT MALL</h2> */}
 						</div>
 						<p className='text-sm leading-relaxed text-gray-100'>
-							The Awolowo Technology Hub is a
-							transformative redevelopment
-							initiative that seeks to repurpose
-							the iconic Awolowo House, located in
-							the heart of Ikeja's bustling
-							commercial district, into a
-							cutting-edge innovation and
-							co-creation space.
+							The Awolowo Technology Hub is a transformative
+							redevelopment initiative that seeks to repurpose the
+							iconic Awolowo House, located in the heart of Ikeja's
+							bustling commercial district, into a cutting-edge
+							innovation and co-creation space.
 						</p>
 
 						{/* Contact Info */}
@@ -149,16 +130,15 @@ const Footer = () => {
 									icon='mdi:map-marker'
 									className='text-primary-lemon-green'
 								/>
-								<span>
-									Awolowo House, Ikeja, Lagos
-								</span>
+								<span>Awolowo House, Ikeja, Lagos</span>
 							</div>
 							<div className='flex items-center gap-2 text-sm'>
 								<Icon
 									icon='mdi:phone'
 									className='text-primary-lemon-green'
 								/>
-								<span>+234 (0) 800 000 0000</span>
+								<p>+(234)8063335994</p>
+								<p>+(234)9096936084</p>
 							</div>
 							<div className='flex items-center gap-2 text-sm'>
 								<Icon
@@ -177,21 +157,15 @@ const Footer = () => {
 								icon='mdi:email-newsletter'
 								className='text-primary-lemon-green text-2xl'
 							/>
-							<h3 className='text-lg font-semibold'>
-								Stay Updated
-							</h3>
+							<h3 className='text-lg font-semibold'>Stay Updated</h3>
 						</div>
 
 						<p className='text-sm text-gray-100 mb-4'>
-							Get the latest updates on
-							innovation, events, and
+							Get the latest updates on innovation, events, and
 							opportunities at AT MALL.
 						</p>
 
-						<form
-							onSubmit={handleSubscribe}
-							className='space-y-3'
-						>
+						<form onSubmit={handleSubscribe} className='space-y-3'>
 							<div>
 								<input
 									type='email'
@@ -200,8 +174,8 @@ const Footer = () => {
 									onChange={handleEmailChange}
 									className={`w-full outline-none border rounded-lg px-4 py-3 text-black placeholder-gray-500 transition-colors ${
 										emailError
-											? "border-red-500 bg-red-50"
-											: "border-gray-300 focus:border-primary-lemon-green focus:ring-2 focus:ring-primary-lemon-green/20"
+											? 'border-red-500 bg-red-50'
+											: 'border-gray-300 focus:border-primary-lemon-green focus:ring-2 focus:ring-primary-lemon-green/20'
 									}`}
 									disabled={isSubscribing}
 								/>
@@ -216,20 +190,14 @@ const Footer = () => {
 							<Button
 								type='submit'
 								title={
-									isSubscribing
-										? "Subscribing..."
-										: "Subscribe Now"
+									isSubscribing ? 'Subscribing...' : 'Subscribe Now'
 								}
 								className={`w-full bg-primary-lemon-green hover:bg-primary-lemon-green/90 transition-all duration-200 ${
-									isSubscribing
-										? "opacity-75 cursor-not-allowed"
-										: ""
+									isSubscribing ? 'opacity-75 cursor-not-allowed' : ''
 								}`}
 								disabled={isSubscribing}
 								icon={
-									isSubscribing
-										? "mdi:loading mdi-spin"
-										: "mdi:send"
+									isSubscribing ? 'mdi:loading mdi-spin' : 'mdi:send'
 								}
 							/>
 						</form>
@@ -243,18 +211,16 @@ const Footer = () => {
 					<div className='flex flex-col lg:flex-row items-center justify-between gap-6'>
 						{/* Navigation Links */}
 						<nav className='flex flex-wrap items-center justify-center lg:justify-start gap-6 lg:gap-8'>
-							{navigationLinks.map(
-								(link, index) => (
-									<Link
-										key={index}
-										to={link.link}
-										className='text-white hover:text-primary-lemon-green transition-colors duration-200 text-sm font-medium relative group'
-									>
-										{link.name}
-										<span className='absolute -bottom-1 left-0 w-0 h-0.5 bg-primary-lemon-green transition-all duration-200 group-hover:w-full'></span>
-									</Link>
-								)
-							)}
+							{navigationLinks.map((link, index) => (
+								<Link
+									key={index}
+									to={link.link}
+									className='text-white hover:text-primary-lemon-green transition-colors duration-200 text-sm font-medium relative group'
+								>
+									{link.name}
+									<span className='absolute -bottom-1 left-0 w-0 h-0.5 bg-primary-lemon-green transition-all duration-200 group-hover:w-full'></span>
+								</Link>
+							))}
 						</nav>
 
 						{/* Social Media Links */}
@@ -272,10 +238,7 @@ const Footer = () => {
 										rel='noopener noreferrer'
 										aria-label={`Follow us on ${social.name}`}
 									>
-										<Icon
-											className='text-lg'
-											icon={social.icon}
-										/>
+										<Icon className='text-lg' icon={social.icon} />
 									</Link>
 								))}
 							</div>
@@ -288,8 +251,7 @@ const Footer = () => {
 					<div className='flex flex-col lg:flex-row items-center justify-between gap-4 text-sm text-gray-200'>
 						<p className='flex items-center gap-2'>
 							<Icon icon='mdi:copyright' />
-							{year} B360 Development. All Rights
-							Reserved.
+							{year} B360 Development. All Rights Reserved.
 						</p>
 
 						<div className='flex items-center gap-6'>
@@ -299,18 +261,14 @@ const Footer = () => {
 							>
 								Terms of Service
 							</Link>
-							<span className='text-white/40'>
-								•
-							</span>
+							<span className='text-white/40'>•</span>
 							<Link
 								to='/privacy'
 								className='hover:text-primary-lemon-green transition-colors duration-200'
 							>
 								Privacy Policy
 							</Link>
-							<span className='text-white/40'>
-								•
-							</span>
+							<span className='text-white/40'>•</span>
 							<Link
 								to='/cookies'
 								className='hover:text-primary-lemon-green transition-colors duration-200'

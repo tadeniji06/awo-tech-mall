@@ -15,9 +15,8 @@ const Contact = () => {
 						Let's Work Together
 					</h1>
 					<p className='leading-tight max-w-[450px] text-base'>
-						Reach out to learn more about our
-						spaces, book a tour, or explore
-						partnership opportunities.
+						Reach out to learn more about our spaces, book a tour, or
+						explore partnership opportunities.
 					</p>
 				</div>
 				<div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6'>
@@ -27,13 +26,11 @@ const Contact = () => {
 								className='text-primary-lemon-green text-3xl'
 								icon={'ic:baseline-phone'}
 							/>
-							<p className='text-xl font-medium'>
-								Reach out to us:
-							</p>
+							<p className='text-xl font-medium'>Reach out to us:</p>
 						</div>
 						<div className='flex flex-col gap-2 pl-2'>
-							<p>+(234) 70 234 5678</p>
-							<p>+(234) 70 234 5678</p>
+							<p>+(234)8063335994</p>
+							<p>+(234)9096936084</p>
 						</div>
 					</div>
 					<div className='border border-gray-300 rounded-lg flex flex-col gap-4 p-6 bg-white shadow-sm'>
@@ -55,19 +52,14 @@ const Contact = () => {
 						<div className='flex gap-4 items-center'>
 							<Icon
 								className='text-primary-lemon-green text-3xl'
-								icon={
-									'ic:baseline-location-on'
-								}
+								icon={'ic:baseline-location-on'}
 							/>
-							<p className='text-xl font-medium'>
-								Visit Us:
-							</p>
+							<p className='text-xl font-medium'>Visit Us:</p>
 						</div>
 						<div className='flex flex-col gap-2 pl-2'>
 							<p>
-								24, Computer Village, Allen
-								avenue, Ikeja, Lagos state,
-								Nigeria.
+								24, Computer Village, Allen avenue, Ikeja, Lagos
+								state, Nigeria.
 							</p>
 						</div>
 					</div>
