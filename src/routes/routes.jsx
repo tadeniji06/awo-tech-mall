@@ -1,48 +1,53 @@
 import {
 	createBrowserRouter,
 	RouterProvider,
-} from "react-router-dom";
-import AppLayout from "../layouts/AppLayout";
-import Home from "../screens/Home";
-import About from "../screens/About";
-import Spaces from "../screens/Spaces";
-import Events from "../screens/Events";
-import Contact from "../screens/Contact";
-import NotFound from "../screens/NotFound";
-import Features from "../screens/Features";
+} from 'react-router-dom';
+import AppLayout from '../layouts/AppLayout';
+import Home from '../screens/Home';
+import About from '../screens/About';
+import Spaces from '../screens/Spaces';
+import Events from '../screens/Events';
+import Contact from '../screens/Contact';
+import NotFound from '../screens/NotFound';
+import Features from '../screens/Features';
+import Blog from '../screens/Blog';
 
 const router = createBrowserRouter([
 	{
-		path: "/",
+		path: '/',
 		element: <AppLayout />,
 		children: [
 			{
-				path: "/",
+				path: '/',
 				element: <Home />,
 			},
 			{
-				path: "*",
+				path: '*',
 				element: <NotFound />,
 			},
 			{
-				path: "/about",
+				path: '/about',
 				element: <About />,
 			},
 			{
-				path: "/spaces",
+				path: '/spaces',
 				element: <Spaces />,
 			},
 			{
-				path: "/events",
+				path: '/events',
 				element: <Events />,
 			},
-				{
-				path: "/features",
+			{
+				path: '/features',
 				element: <Features />,
 			},
 			{
-				path: "/contact",
+				path: '/contact',
 				element: <Contact />,
+			},
+			{
+				path: '/blog',
+				element: <Blog />,
 			},
 		],
 	},

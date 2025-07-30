@@ -23,6 +23,10 @@ export const navigationLinks = [
 		name: 'Contact',
 		link: '/contact',
 	},
+		{
+		name: 'Blog',
+		link: '/blog',
+	},
 ];
 
 export const socials = [
