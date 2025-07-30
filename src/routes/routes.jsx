@@ -11,7 +11,7 @@ import Contact from '../screens/Contact';
 import NotFound from '../screens/NotFound';
 import Features from '../screens/Features';
 import Blog from '../screens/Blog';
-
+import ViewBlog from '../components/ViewBlog';
 const router = createBrowserRouter([
 	{
 		path: '/',
@@ -48,6 +48,10 @@ const router = createBrowserRouter([
 			{
 				path: '/blog',
 				element: <Blog />,
+			},
+			{
+				path: '/blog/:slug',
+				element: <ViewBlog />,
 			},
 		],
 	},

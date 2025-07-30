@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -11,11 +11,12 @@
 }
 
 body {
-	font-family: "Inter", sans-serif;
+	font-family: 'Inter', sans-serif;
 	font-optical-sizing: auto;
 	background-color: #ffffff;
 }
-/* custom scroll bar */
+
+/* Custom scroll bar */
 ::-webkit-scrollbar {
 	width: 8px;
 	height: 8px;
@@ -32,8 +33,183 @@ body {
 	border-radius: 4px;
 }
 
-/* for firefox */
+/* For firefox */
 * {
 	scrollbar-width: thin;
 	scrollbar-color: #888 #f1f1f1;
+}
+
+/* Line clamp utilities for older Tailwind versions */
+.line-clamp-1 {
+	overflow: hidden;
+	display: -webkit-box;
+	-webkit-box-orient: vertical;
+	-webkit-line-clamp: 1;
+}
+
+.line-clamp-2 {
+	overflow: hidden;
+	display: -webkit-box;
+	-webkit-box-orient: vertical;
+	-webkit-line-clamp: 2;
+}
+
+.line-clamp-3 {
+	overflow: hidden;
+	display: -webkit-box;
+	-webkit-box-orient: vertical;
+	-webkit-line-clamp: 3;
+}
+
+/* Blog content specific styles */
+.prose {
+	color: #374151;
+	max-width: none;
+}
+
+.prose p {
+	margin-top: 1rem;
+	margin-bottom: 1rem;
+	line-height: 1.75;
+}
+
+.prose h1,
+.prose h2,
+.prose h3,
+.prose h4,
+.prose h5,
+.prose h6 {
+	color: #111827;
+	margin-top: 2rem;
+	margin-bottom: 1rem;
+	font-weight: 700;
+	line-height: 1.25;
+}
+
+.prose h1 {
+	font-size: 2.25rem;
+}
+
+.prose h2 {
+	font-size: 1.875rem;
+}
+
+.prose h3 {
+	font-size: 1.5rem;
+	font-weight: 600;
+}
+
+.prose h4 {
+	font-size: 1.25rem;
+	font-weight: 600;
+}
+
+.prose strong {
+	color: #111827;
+	font-weight: 600;
+}
+
+.prose blockquote {
+	border-left: 4px solid #163158;
+	padding-left: 1.5rem;
+	padding-top: 0.5rem;
+	padding-bottom: 0.5rem;
+	margin: 1.5rem 0;
+	background-color: #f9fafb;
+	font-style: italic;
+	color: #6b7280;
+}
+
+.prose code {
+	background-color: #f3f4f6;
+	color: #163158;
+	padding: 0.25rem 0.5rem;
+	border-radius: 0.25rem;
+	font-size: 0.875rem;
+	font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
+		'Liberation Mono', 'Courier New', monospace;
+}
+
+.prose pre {
+	background-color: #1f2937;
+	color: #f9fafb;
+	padding: 1rem;
+	border-radius: 0.5rem;
+	overflow-x: auto;
+	margin: 1.5rem 0;
+}
+
+.prose pre code {
+	background-color: transparent;
+	color: inherit;
+	padding: 0;
+	border-radius: 0;
+	font-size: inherit;
+}
+
+.prose a {
+	color: #163158;
+	text-decoration: none;
+}
+
+.prose a:hover {
+	text-decoration: underline;
+}
+
+.prose ul,
+.prose ol {
+	margin: 1rem 0;
+	padding-left: 1.5rem;
+}
+
+.prose li {
+	margin: 0.5rem 0;
+}
+
+.prose img {
+	border-radius: 0.5rem;
+	box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+		0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+/* Loading animation */
+@keyframes spin {
+	to {
+		transform: rotate(360deg);
+	}
+}
+
+.animate-spin {
+	animation: spin 1s linear infinite;
+}
+
+/* Smooth transitions */
+* {
+	transition-property: color, background-color, border-color,
+		text-decoration-color, fill, stroke, opacity, box-shadow,
+		transform, filter, backdrop-filter;
+	transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+	transition-duration: 150ms;
+}
+
+/* Focus styles */
+button:focus-visible,
+input:focus-visible,
+a:focus-visible {
+	outline: 2px solid #163158;
+	outline-offset: 2px;
+}
+
+/* Custom button hover effects */
+.btn-hover-lift:hover {
+	transform: translateY(-1px);
+	box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
+		0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+
+/* Card hover effects */
+.card-hover:hover {
+	transform: translateY(-2px);
+	box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1),
+		0 10px 10px -5px rgba(0, 0, 0, 0.04);
 }
